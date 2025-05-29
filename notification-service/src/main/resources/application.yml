@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: notification-service
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: "jdbc:postgresql://localhost:5434/notifications_db"
+    username: postgres
+    password: postgres
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:/schema.sql
+
+kafka:
+  bootstrap:
+    server: localhost:9092, localhost:9093
+  topic:
+    order-created: order_created
+    order-updated: order_updated
+    order-deleted: order_deleted
+  consumer:
+    group-id: notification_service
