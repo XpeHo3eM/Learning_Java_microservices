@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "3d378471-99db-4d78-aee6-f02053cebeea",
+		"name": "Learning_Java_Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26812906"
+	},
+	"item": [
+		{
+			"name": "Notification service",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url\": \"some_test_link.link\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_NOTIFICATION_SERVICE}}/api/subscriptions",
+							"host": [
+								"{{URL_NOTIFICATION_SERVICE}}"
+							],
+							"path": [
+								"api",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_NOTIFICATION_SERVICE}}/api/subscriptions/{{NOTIFICATION_ID}}",
+							"host": [
+								"{{URL_NOTIFICATION_SERVICE}}"
+							],
+							"path": [
+								"api",
+								"subscriptions",
+								"{{NOTIFICATION_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url\": \"some_test_link2.link\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_NOTIFICATION_SERVICE}}/api/subscriptions/{{NOTIFICATION_ID}}",
+							"host": [
+								"{{URL_NOTIFICATION_SERVICE}}"
+							],
+							"path": [
+								"api",
+								"subscriptions",
+								"{{NOTIFICATION_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL_NOTIFICATION_SERVICE}}/api/subscriptions/{{NOTIFICATION_ID}}",
+							"host": [
+								"{{URL_NOTIFICATION_SERVICE}}"
+							],
+							"path": [
+								"api",
+								"subscriptions",
+								"{{NOTIFICATION_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order service",
+			"item": [
+				{
+					"name": "Upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/tmp/test.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_ORDER_SERVICE}}/api/orders",
+							"host": [
+								"{{URL_ORDER_SERVICE}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "updatedFile",
+									"type": "file",
+									"src": "/C:/tmp/test.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_ORDER_SERVICE}}/api/orders?bucket={{BUCKET}}&key=learning/test.txt",
+							"host": [
+								"{{URL_ORDER_SERVICE}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "bucket",
+									"value": "{{BUCKET}}"
+								},
+								{
+									"key": "key",
+									"value": "learning/test.txt"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL_ORDER_SERVICE}}/api/orders?bucket={{BUCKET}}&key=learning/test.txt",
+							"host": [
+								"{{URL_ORDER_SERVICE}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "bucket",
+									"value": "{{BUCKET}}"
+								},
+								{
+									"key": "key",
+									"value": "learning/test.txt"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "Upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/tmp/test.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_GATEWAY}}/api/orders/process",
+							"host": [
+								"{{URL_GATEWAY}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "updatedFile",
+									"type": "file",
+									"src": "/C:/tmp/test.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_GATEWAY}}/api/orders/process?bucket={{BUCKET}}&key=learning/test.txt",
+							"host": [
+								"{{URL_GATEWAY}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"process"
+							],
+							"query": [
+								{
+									"key": "bucket",
+									"value": "{{BUCKET}}"
+								},
+								{
+									"key": "key",
+									"value": "learning/test.txt"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL_GATEWAY}}/api/orders/process?bucket={{BUCKET}}&key=learning/test.txt",
+							"host": [
+								"{{URL_GATEWAY}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"process"
+							],
+							"query": [
+								{
+									"key": "bucket",
+									"value": "{{BUCKET}}"
+								},
+								{
+									"key": "key",
+									"value": "learning/test.txt"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL_GATEWAY",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "URL_ORDER_SERVICE",
+			"value": "http://localhost:8081",
+			"type": "string"
+		},
+		{
+			"key": "URL_NOTIFICATION_SERVICE",
+			"value": "http://localhost:8082",
+			"type": "string"
+		},
+		{
+			"key": "NOTIFICATION_ID",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "BUCKET",
+			"value": "npv90-learning-java-bucket",
+			"type": "string"
+		}
+	]
+}

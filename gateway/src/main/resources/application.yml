@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: order-service-route
+          uri: http://order-service:8080
+          predicates:
+            - Path=/api/orders/process**
+          filters:
+            - RewritePath=/api/orders/process(?<segment>.*), /api/orders${segment}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
